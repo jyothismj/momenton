@@ -1,5 +1,5 @@
 
-The given directory AirVisual_API has a python file “TestAPIs.py”
+The given directory AirVisual_API has a python file “TestAPIs.py” to meet below requirements .
 
 Requirements: 
 
