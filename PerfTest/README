@@ -1,0 +1,4 @@
+use JMETER 5.1x version or above .
+Added few additonal samplers and thread groups such as ultimate thread group .Down load and place jmeter-plugins-manager-1.4 into lib/ext of your jmeter installation
+Use the plugin manager to down load and install appropriate plugins  such as ultimate tgread group .
+TO View results , read attached result ,How ever raw result can be found at Test 1, open the file index using a browser such as I.E
