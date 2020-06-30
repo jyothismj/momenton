@@ -14,13 +14,12 @@ d)	Use the longitude and latitude get the temperature form the nearest city and 
 
 Prerequisite
 
-The executor of this python script should have python installed with 3.x version.
-From the command prompt 
+Prerequisite:
+Python 3.x, Selenium
 
+Steps:
+Ensure python is in PATH and execute command 'python TestWebUI.py'
 pip install requests
 pip show requests
-
 python TestAPIs.py 
-
 Attached a sample screen shot of my run 
-
