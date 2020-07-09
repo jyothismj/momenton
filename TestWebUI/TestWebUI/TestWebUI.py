@@ -11,7 +11,7 @@ output=''
 url = "https://www.tobydealsau.com/"
 itemsfile = "test_webui.csv"
 
-chrome_driver_path = "D:/drivers/chromedriver.exe"
+chrome_driver_path = "C:/PY/b2bsvt/drivers/chromedriver.exe"
 options = webdriver.ChromeOptions()
 # options.add_argument('headless') 
 options.add_argument("--start-maximized")
@@ -45,7 +45,7 @@ def addToCart():
         elem = driver.find_elements_by_xpath("//button[@title='Add to Cart']")
         elem[0].click()
 
-        elem = wait(driver, timeout).until(EC.presence_of_element_located((By.XPATH, "//h1[contains(.,'Shopping Cart')]")))
+       elem = wait(driver, timeout).until(EC.presence_of_element_located((By.XPATH, "//span[text()='Continue Shopping']")))
         print ("Item added to cart...")
     except TimeoutException as e:
         print ("failed to addToCart")
