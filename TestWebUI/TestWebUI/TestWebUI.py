@@ -69,7 +69,9 @@ def checkoutItem():
         scrollViewToElementAndInputText("//input[@id='billing:email']", "jyo123@gmail.com")
         scrollViewToElementAndInputText("//input[@id='billing:street1']", "19A Gardiner Street, Berwick")
         scrollViewToElementAndInputText("//input[@id='billing:city']", "Melbourne")
+        scrollViewToElementAndClick("//select[@id='billing:region_id']/option[@title='Victoria']")
         scrollViewToElementAndInputText("//input[@id='billing:postcode']", "3806")
+        scrollViewToElementAndClick("//select[@id='billing:country_id']/option[@value='AU']")
         scrollViewToElementAndInputText("//input[@id='billing:telephone']", "0452299999")
         elem[1].click()
         print ("Entered billing details...")
@@ -139,7 +141,7 @@ if __name__ == "__main__":
     acceptCookies()
     with open(itemsfile, 'r') as readfile:
         csv_reader = csv.reader(readfile, delimiter=',')
-        for row in csv_reader:
+        for row in csv_reader:      # ['Item1', 'Item2']
             product = str(row[0])
             searchProduct(product)
             addToCart()
