@@ -40,7 +40,7 @@ function summaryTableHeader(header) {
 
     cell = document.createElement('th');
     cell.setAttribute("data-sorter", false);
-    cell.colSpan = 6;
+    cell.colSpan = 7;
     cell.innerHTML = "Response Times (ms)";
     newRow.appendChild(cell);
 
@@ -133,7 +133,7 @@ $(document).ready(function() {
         widgets: ['zebra']
     });
 
-    var data = {"OkPercent": 60.61742642815926, "KoPercent": 39.38257357184074};
+    var data = {"OkPercent": 93.58874120406567, "KoPercent": 6.411258795934324};
     var dataset = [
         {
             "label" : "KO",
@@ -173,7 +173,7 @@ $(document).ready(function() {
     });
 
     // Creates APDEX table
-    createTable($("#apdexTable"), {"supportsControllersDiscrimination": true, "overall": {"data": [0.0017311021350259665, 500, 1500, "Total"], "isController": false}, "titles": ["Apdex", "T (Toleration threshold)", "F (Frustration threshold)", "Label"], "items": [{"data": [0.0017311021350259665, 500, 1500, "HomePage"], "isController": false}]}, function(index, item){
+    createTable($("#apdexTable"), {"supportsControllersDiscrimination": true, "overall": {"data": [0.003909304143862392, 500, 1500, "Total"], "isController": false}, "titles": ["Apdex", "T (Toleration threshold)", "F (Frustration threshold)", "Label"], "items": [{"data": [0.003909304143862392, 500, 1500, "HomePage"], "isController": false}]}, function(index, item){
         switch(index){
             case 0:
                 item = item.toFixed(3);
@@ -187,7 +187,7 @@ $(document).ready(function() {
     }, [[0, 0]], 3);
 
     // Create statistics table
-    createTable($("#statisticsTable"), {"supportsControllersDiscrimination": true, "overall": {"data": ["Total", 3466, 1365, 39.38257357184074, 28600.952106174238, 791, 74915, 46878.200000000004, 54975.99999999998, 72833.65, 35.93050257090728, 1342.6223428396863, 7.614543216899569], "isController": false}, "titles": ["Label", "#Samples", "KO", "Error %", "Average", "Min", "Max", "90th pct", "95th pct", "99th pct", "Transactions\/s", "Received", "Sent"], "items": [{"data": ["HomePage", 3466, 1365, 39.38257357184074, 28600.952106174238, 791, 74915, 46878.200000000004, 54975.99999999998, 72833.65, 35.93050257090728, 1342.6223428396863, 7.614543216899569], "isController": false}]}, function(index, item){
+    createTable($("#statisticsTable"), {"supportsControllersDiscrimination": true, "overall": {"data": ["Total", 5116, 328, 6.411258795934324, 26968.763878029713, 478, 74303, 27159.0, 39820.0, 42192.0, 63334.0, 47.32523611740655, 2644.1478085425474, 12.15409869522585], "isController": false}, "titles": ["Label", "#Samples", "KO", "Error %", "Average", "Min", "Max", "Median", "90th pct", "95th pct", "99th pct", "Transactions\/s", "Received", "Sent"], "items": [{"data": ["HomePage", 5116, 328, 6.411258795934324, 26968.763878029713, 478, 74303, 27159.0, 39820.0, 42192.0, 63334.0, 47.32523611740655, 2644.1478085425474, 12.15409869522585], "isController": false}]}, function(index, item){
         switch(index){
             // Errors pct
             case 3:
@@ -197,16 +197,18 @@ $(document).ready(function() {
             case 4:
             // Mean
             case 7:
-            // Percentile 1
+            // Median
             case 8:
-            // Percentile 2
+            // Percentile 1
             case 9:
-            // Percentile 3
+            // Percentile 2
             case 10:
-            // Throughput
+            // Percentile 3
             case 11:
-            // Kbytes/s
+            // Throughput
             case 12:
+            // Kbytes/s
+            case 13:
             // Sent Kbytes/s
                 item = item.toFixed(2);
                 break;
@@ -215,7 +217,7 @@ $(document).ready(function() {
     }, [[0, 0]], 0, summaryTableHeader);
 
     // Create error table
-    createTable($("#errorsTable"), {"supportsControllersDiscrimination": false, "titles": ["Type of error", "Number of errors", "% in errors", "% in all samples"], "items": [{"data": ["Non HTTP response code: javax.net.ssl.SSLException\/Non HTTP response message: An established connection was aborted by the software in your host machine", 289, 21.17216117216117, 8.338141950375071], "isController": false}, {"data": ["Non HTTP response code: org.apache.http.conn.HttpHostConnectException\/Non HTTP response message: Connect to momenton.com.au:443 [momenton.com.au\\\/13.211.129.237] failed: Connection timed out: connect", 759, 55.604395604395606, 21.898442008078476], "isController": false}, {"data": ["Non HTTP response code: javax.net.ssl.SSLException\/Non HTTP response message: Connection reset", 317, 23.223443223443223, 9.14598961338719], "isController": false}]}, function(index, item){
+    createTable($("#errorsTable"), {"supportsControllersDiscrimination": false, "titles": ["Type of error", "Number of errors", "% in errors", "% in all samples"], "items": [{"data": ["Non HTTP response code: javax.net.ssl.SSLException\/Non HTTP response message: An established connection was aborted by the software in your host machine", 14, 4.2682926829268295, 0.2736512900703675], "isController": false}, {"data": ["Non HTTP response code: org.apache.http.conn.HttpHostConnectException\/Non HTTP response message: Connect to momenton.com.au:443 [momenton.com.au\\\/13.211.129.237] failed: Connection timed out: connect", 314, 95.73170731707317, 6.137607505863956], "isController": false}]}, function(index, item){
         switch(index){
             case 2:
             case 3:
@@ -226,7 +228,7 @@ $(document).ready(function() {
     }, [[1, 1]]);
 
         // Create top5 errors by sampler
-    createTable($("#top5ErrorsBySamplerTable"), {"supportsControllersDiscrimination": false, "overall": {"data": ["Total", 3466, 1365, "Non HTTP response code: org.apache.http.conn.HttpHostConnectException\/Non HTTP response message: Connect to momenton.com.au:443 [momenton.com.au\\\/13.211.129.237] failed: Connection timed out: connect", 759, "Non HTTP response code: javax.net.ssl.SSLException\/Non HTTP response message: Connection reset", 317, "Non HTTP response code: javax.net.ssl.SSLException\/Non HTTP response message: An established connection was aborted by the software in your host machine", 289, null, null, null, null], "isController": false}, "titles": ["Sample", "#Samples", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors"], "items": [{"data": ["HomePage", 3466, 1365, "Non HTTP response code: org.apache.http.conn.HttpHostConnectException\/Non HTTP response message: Connect to momenton.com.au:443 [momenton.com.au\\\/13.211.129.237] failed: Connection timed out: connect", 759, "Non HTTP response code: javax.net.ssl.SSLException\/Non HTTP response message: Connection reset", 317, "Non HTTP response code: javax.net.ssl.SSLException\/Non HTTP response message: An established connection was aborted by the software in your host machine", 289, null, null, null, null], "isController": false}]}, function(index, item){
+    createTable($("#top5ErrorsBySamplerTable"), {"supportsControllersDiscrimination": false, "overall": {"data": ["Total", 5116, 328, "Non HTTP response code: org.apache.http.conn.HttpHostConnectException\/Non HTTP response message: Connect to momenton.com.au:443 [momenton.com.au\\\/13.211.129.237] failed: Connection timed out: connect", 314, "Non HTTP response code: javax.net.ssl.SSLException\/Non HTTP response message: An established connection was aborted by the software in your host machine", 14, null, null, null, null, null, null], "isController": false}, "titles": ["Sample", "#Samples", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors"], "items": [{"data": ["HomePage", 5116, 328, "Non HTTP response code: org.apache.http.conn.HttpHostConnectException\/Non HTTP response message: Connect to momenton.com.au:443 [momenton.com.au\\\/13.211.129.237] failed: Connection timed out: connect", 314, "Non HTTP response code: javax.net.ssl.SSLException\/Non HTTP response message: An established connection was aborted by the software in your host machine", 14, null, null, null, null, null, null], "isController": false}]}, function(index, item){
         return item;
     }, [[0, 0]], 0);
 
