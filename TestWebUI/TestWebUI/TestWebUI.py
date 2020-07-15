@@ -74,6 +74,7 @@ def checkoutItem():
         scrollViewToElementAndClick("//select[@id='billing:country_id']/option[@value='AU']")
         scrollViewToElementAndInputText("//input[@id='billing:telephone']", "0452299999")
         elem[1].click()
+        wait(driver, timeout).until(EC.presence_of_element_located((By.XPATH, "//span[text()='Order Summary']")))
         print ("Entered billing details...")
 
         # Shipping Method
