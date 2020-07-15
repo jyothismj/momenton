@@ -5,3 +5,4 @@ Python 3.x, Selenium
 
 Steps:
 Ensure python is in PATH and execute command 'python TestWebUI.py'
+Also when executing the script ,ensure you have chrome driver path updated to script as per your local path
